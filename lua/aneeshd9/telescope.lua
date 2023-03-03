@@ -8,11 +8,11 @@ if not wk_status_ok then
   return
 end
 
-opts = {
+local opts = {
   prefix = '<leader>'
 }
 
-keymaps = {
+local keymaps = {
   t = {
     name = 'telescope',
     f = { builtin.find_files, 'Find Files' },

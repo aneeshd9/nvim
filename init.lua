@@ -17,6 +17,7 @@ require 'aneeshd9.nvim_tree'
 require 'aneeshd9.treesitter'
 require 'aneeshd9.neogit'
 require 'aneeshd9.telescope'
+require 'aneeshd9.mini_bufremove'
 
 -- Keybindings
 require 'aneeshd9.which_key'

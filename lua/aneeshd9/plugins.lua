@@ -104,6 +104,9 @@ return packer.startup(function(use)
     },
   }
 
+  -- mini.bufremove
+  use 'echasnovski/mini.bufremove'
+
   if packer_bootstrap then
     require('packer').sync()
   end

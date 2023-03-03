@@ -11,7 +11,7 @@ end
 nvim_tree.setup({
   disable_netrw = true,
   hijack_directories = {
-    enable = false,
+    enable = true,
   },
   filters = {
     custom = { '.git' },
@@ -101,7 +101,7 @@ if not wk_status_ok then
   return
 end
 
-local mappings = {
+local keymaps = {
   e = {
     name = 'explorer',
     e = { '<cmd>NvimTreeToggle<cr>', 'Toggle NvimTree' }
@@ -112,4 +112,4 @@ local opts = {
   prefix = '<leader>',
 }
 
-wk.register(mappings, opts)
+wk.register(keymaps, opts)

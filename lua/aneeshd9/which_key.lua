@@ -11,7 +11,7 @@ wk.setup({
 
 -- These are global mappings
 -- Plugin related mappings are in their own files
-local mappings = {
+local keymaps = {
   g = {
     -- neogit keymaps
     name = 'neogit',
@@ -28,4 +28,4 @@ local opts = {
   prefix = '<leader>',
 }
 
-wk.register(mappings, opts)
+wk.register(keymaps, opts)
