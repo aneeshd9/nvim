@@ -74,6 +74,9 @@ return packer.startup(function(use)
   -- bufferline
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
 
+  -- gitsigns
+  use 'lewis6991/gitsigns.nvim'
+
   if packer_bootstrap then
     require('packer').sync()
   end
