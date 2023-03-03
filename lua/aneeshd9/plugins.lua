@@ -53,9 +53,6 @@ return packer.startup(function(use)
   -- neogit
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
-  -- notifications
-  use 'rcarriga/nvim-notify'
-
   -- autopairs
   use {
     "windwp/nvim-autopairs",
