@@ -9,16 +9,23 @@ wk.setup({
   },
 })
 
+-- These are global mappings
+-- Plugin related mappings are in their own files
 local mappings = {
   g = {
     -- neogit keymaps
-    name = "neogit",
-    g = { "<cmd>Neogit<cr>", "Neogit Status" },
-  }
+    name = 'neogit',
+    g = { '<cmd>Neogit<cr>', 'Neogit Status' },
+  },
+  s = {
+    -- search keymaps
+    name = 'search',
+    h = { '<cmd>nohlsearch<cr>', 'No Highlight Search'},
+  },
 }
 
 local opts = {
-  prefix = "<leader>",
+  prefix = '<leader>',
 }
 
 wk.register(mappings, opts)

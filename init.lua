@@ -15,6 +15,7 @@ require 'aneeshd9.gitsigns'
 -- Editor
 require 'aneeshd9.treesitter'
 require 'aneeshd9.neogit'
+require 'aneeshd9.telescope'
 
 -- Keybindings
 require 'aneeshd9.which_key'
