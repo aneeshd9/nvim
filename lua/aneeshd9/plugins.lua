@@ -53,6 +53,9 @@ return packer.startup(function(use)
   -- neogit
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
+  -- notifications
+  use 'rcarriga/nvim-notify'
+
   if packer_bootstrap then
     require('packer').sync()
   end
