@@ -11,6 +11,7 @@ require 'aneeshd9.lualine'
 require 'aneeshd9.nvim_notify'
 require 'aneeshd9.bufferline'
 require 'aneeshd9.gitsigns'
+require 'aneeshd9.nvim_tree'
 
 -- Editor
 require 'aneeshd9.treesitter'
