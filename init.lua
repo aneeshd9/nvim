@@ -19,5 +19,8 @@ require 'aneeshd9.neogit'
 require 'aneeshd9.telescope'
 require 'aneeshd9.mini_bufremove'
 
+-- Completion
+require 'aneeshd9.cmp'
+
 -- Keybindings
 require 'aneeshd9.which_key'

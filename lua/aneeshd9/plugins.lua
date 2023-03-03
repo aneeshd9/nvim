@@ -44,11 +44,11 @@ return packer.startup(function(use)
   -- tree-sitter
   use 'nvim-treesitter/nvim-treesitter'
 
+  -- icons
+  use 'kyazdani42/nvim-web-devicons'
+
   -- lualine
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  use 'nvim-lualine/lualine.nvim'
 
   -- neogit
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
@@ -118,6 +118,18 @@ return packer.startup(function(use)
       require("persistence").setup()
     end,
   })
+
+  -- snippets
+  use 'L3MON4D3/LuaSnip'
+  use 'rafamadriz/friendly-snippets'
+
+  -- completion
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'saadparwaiz1/cmp_luasnip'
 
   if packer_bootstrap then
     require('packer').sync()
