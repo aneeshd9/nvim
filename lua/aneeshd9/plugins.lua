@@ -50,6 +50,9 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  -- neogit
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
   if packer_bootstrap then
     require('packer').sync()
   end
