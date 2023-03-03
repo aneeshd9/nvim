@@ -107,6 +107,21 @@ return packer.startup(function(use)
   -- mini.bufremove
   use 'echasnovski/mini.bufremove'
 
+  -- alpha
+  use {
+    'goolord/alpha-nvim',
+  }
+
+  -- presistence
+  use({
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    module = "persistence",
+    config = function()
+      require("persistence").setup()
+    end,
+  })
+
   if packer_bootstrap then
     require('packer').sync()
   end

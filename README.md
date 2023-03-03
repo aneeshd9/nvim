@@ -25,10 +25,8 @@
 
 ## TODO:
 
-- NvimTree
-- Alpha
 - Navic
-- LSP
 - Cmp
+- Lsp
 - DAP
 
