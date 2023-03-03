@@ -26,6 +26,9 @@ return require('packer').startup(function(use)
   -- colorscheme plugin
   use 'folke/tokyonight.nvim'
 
+  -- tree-sitter
+  use 'nvim-treesitter/nvim-treesitter'
+
   if packer_bootstrap then
     require('packer').sync()
   end
