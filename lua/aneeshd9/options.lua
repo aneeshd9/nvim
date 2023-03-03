@@ -1,5 +1,3 @@
--- This file is automatically loaded by plugins.config
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -54,3 +52,30 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
+local keymap = vim.api.nvim_set_keymap
+
+-- Normal --
+-- Better window navigation
+keymap("n", "<c-h>", "<C-w>h", opts)
+keymap("n", "<c-j>", "<C-w>j", opts)
+keymap("n", "<c-k>", "<C-w>k", opts)
+keymap("n", "<c-l>", "<C-w>l", opts)
+
+-- Tabs --
+keymap("n", "<m-t>", ":tabnew %<cr>", opts)
+keymap("n", "<m-y>", ":tabclose<cr>", opts)
+keymap("n", "<m-\\>", ":tabonly<cr>", opts)
+
+-- Resize with arrows
+keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
