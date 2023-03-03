@@ -23,6 +23,12 @@
 	- DAP.
 	- Tree-sitter.
 
-## Plugins (WIP):
+## TODO:
 
-- Lazy.nvim for plugin management.
+- NvimTree
+- Alpha
+- Navic
+- LSP
+- Cmp
+- DAP
+
