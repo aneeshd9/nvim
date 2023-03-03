@@ -26,7 +26,6 @@
 ## TODO:
 
 - Navic
-- Cmp
 - Lsp
 - DAP
 

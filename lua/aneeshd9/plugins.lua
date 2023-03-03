@@ -131,6 +131,12 @@ return packer.startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'saadparwaiz1/cmp_luasnip'
 
+  -- lsp
+  use 'neovim/nvim-lspconfig'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'SmiteshP/nvim-navic'
+
   if packer_bootstrap then
     require('packer').sync()
   end

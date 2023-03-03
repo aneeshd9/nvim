@@ -22,5 +22,8 @@ require 'aneeshd9.mini_bufremove'
 -- Completion
 require 'aneeshd9.cmp'
 
+-- Lsp
+require 'aneeshd9.lsp'
+
 -- Keybindings
 require 'aneeshd9.which_key'
