@@ -20,7 +20,22 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function(use)
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+
+packer.init {
+  max_jobs = 50,
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+    prompt_border = "rounded",
+  },
+}
+
+return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   -- colorscheme plugin
@@ -28,6 +43,12 @@ return require('packer').startup(function(use)
 
   -- tree-sitter
   use 'nvim-treesitter/nvim-treesitter'
+
+  -- lualine
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   if packer_bootstrap then
     require('packer').sync()
