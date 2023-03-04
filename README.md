@@ -25,7 +25,7 @@
 
 ## TODO:
 
-- Navic
-- Lsp
 - DAP
+- JDTLS
+- Autoformatting (null-ls)
 
