@@ -139,6 +139,9 @@ return packer.startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'SmiteshP/nvim-navic'
 
+  -- java
+  use 'mfussenegger/nvim-jdtls'
+
   if packer_bootstrap then
     require('packer').sync()
   end
