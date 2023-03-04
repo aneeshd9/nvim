@@ -80,6 +80,8 @@ return packer.startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use {'nvim-telescope/telescope-ui-select.nvim' }
+
   -- todo comments
   use {
     "folke/todo-comments.nvim",
