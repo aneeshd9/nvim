@@ -25,5 +25,8 @@ require 'aneeshd9.cmp'
 -- Lsp
 require 'aneeshd9.lsp'
 
+-- Debugging
+require 'aneeshd9.dap'
+
 -- Keybindings
 require 'aneeshd9.which_key'

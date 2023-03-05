@@ -1,4 +1,3 @@
--- bootstrap packer
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -12,7 +11,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- autocmd to sync packages on saving this file
 vim.cmd([[
   augroup packer_user_config
     autocmd!
@@ -20,7 +18,7 @@ vim.cmd([[
   augroup end
 ]])
 
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
 end
@@ -29,9 +27,9 @@ packer.init {
   max_jobs = 50,
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+      return require('packer.util').float { border = 'rounded' }
     end,
-    prompt_border = "rounded",
+    prompt_border = 'rounded',
   },
 }
 
@@ -55,13 +53,13 @@ return packer.startup(function(use)
 
   -- autopairs
   use {
-    "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+    'windwp/nvim-autopairs',
+      config = function() require('nvim-autopairs').setup {} end
   }
 
   -- whichkey
   use {
-    "folke/which-key.nvim",
+    'folke/which-key.nvim',
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
@@ -69,7 +67,7 @@ return packer.startup(function(use)
   }
 
   -- bufferline
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = 'v3.*', requires = 'nvim-tree/nvim-web-devicons'}
 
   -- gitsigns
   use 'lewis6991/gitsigns.nvim'
@@ -84,10 +82,10 @@ return packer.startup(function(use)
 
   -- todo comments
   use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
     config = function()
-      require("todo-comments").setup {
+      require('todo-comments').setup {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
@@ -113,11 +111,11 @@ return packer.startup(function(use)
 
   -- presistence
   use({
-    "folke/persistence.nvim",
-    event = "BufReadPre", -- this will only start session saving when an actual file was opened
-    module = "persistence",
+    'folke/persistence.nvim',
+    event = 'BufReadPre', -- this will only start session saving when an actual file was opened
+    module = 'persistence',
     config = function()
-      require("persistence").setup()
+      require('persistence').setup()
     end,
   })
 
@@ -139,8 +137,15 @@ return packer.startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'SmiteshP/nvim-navic'
 
+  -- dap
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+
   -- java
   use 'mfussenegger/nvim-jdtls'
+
+  -- neovim lsp
+  use 'folke/neodev.nvim'
 
   if packer_bootstrap then
     require('packer').sync()

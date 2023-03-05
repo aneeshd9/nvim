@@ -25,7 +25,5 @@
 
 ## TODO:
 
-- DAP
-- JDTLS
 - Autoformatting (null-ls)
 

@@ -8,7 +8,6 @@ if not status_ok_1 then
   return
 end
 
--- List of mason servers to configure
 local servers = {
   'jdtls',
   'pyright',
@@ -16,7 +15,6 @@ local servers = {
   'lua_ls',
 }
 
--- mason settings
 local settings = {
   ui = {
     border = 'rounded',
@@ -25,7 +23,6 @@ local settings = {
   max_concurrent_installers = 4,
 }
 
--- Apply mason settings and install the servers.
 mason.setup(settings)
 mason_lspconfig.setup({
   ensure_installed = servers,
@@ -76,6 +73,26 @@ end
 
 for _, server in pairs(servers) do
   if server == 'jdtls' then
+    goto continue
+  end
+
+  if server == 'lua_ls' then
+    local nd_status_ok, nd = pcall(require, 'neodev')
+    if not nd_status_ok then
+      goto continue
+    end
+
+    nd.setup()
+
+    lspconfig.lua_ls.setup({
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = 'Replace',
+          },
+        },
+      },
+    })
     goto continue
   end
 
