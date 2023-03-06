@@ -93,7 +93,7 @@ for _, server in pairs(servers) do
         },
       },
     })
-    goto continue
+    -- goto continue
   end
 
   local opts = {

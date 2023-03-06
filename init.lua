@@ -28,5 +28,8 @@ require 'aneeshd9.lsp'
 -- Debugging
 require 'aneeshd9.dap'
 
+-- terminal
+require 'aneeshd9.toggleterm'
+
 -- Keybindings
 require 'aneeshd9.which_key'
