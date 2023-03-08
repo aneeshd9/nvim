@@ -1,8 +1,8 @@
+require 'aneeshd9.lsp.navic'
 require 'aneeshd9.lsp.mason'
 
 local icons = require 'aneeshd9.icons'
 local signs = {
-
   { name = 'DiagnosticSignError', text = icons.diagnostics.Error },
   { name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning },
   { name = 'DiagnosticSignHint', text = icons.diagnostics.Hint },
