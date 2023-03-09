@@ -1,41 +1,142 @@
-require 'aneeshd9.lsp.navic'
-require 'aneeshd9.lsp.mason'
+local M = {}
 
-local icons = require 'aneeshd9.icons'
-local signs = {
-  { name = 'DiagnosticSignError', text = icons.diagnostics.Error },
-  { name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning },
-  { name = 'DiagnosticSignHint', text = icons.diagnostics.Hint },
-  { name = 'DiagnosticSignInfo', text = icons.diagnostics.Information },
+local servers = {
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+      },
+    },
+  },
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = 'off',
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = 'workspace',
+        },
+      },
+    },
+  },
+  lua_ls = {
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+          path = vim.split(package.path, ';'),
+        },
+        diagnostics = {
+          globals = { 'vim', 'describe', 'it', 'before_each', 'after_each', 'packer_plugins', 'MiniTest' },
+        },
+        workspace = {
+          checkThirdParty = false,
+        },
+        completion = { callSnippet = 'Replace' },
+        telemetry = { enable = false },
+        hint = {
+          enable = false,
+        },
+      },
+    },
+  },
+  vimls = {},
+  yamlls = {
+    schemastore = {
+      enable = true,
+    },
+    settings = {
+      yaml = {
+        hover = true,
+        completion = true,
+        validate = true,
+        schemas = require('schemastore').json.schemas(),
+      },
+    },
+  },
+  jdtls = {},
+  bashls = {},
 }
 
-for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
+function M.on_attach(client, bufnr)
+  local caps = client.server_capabilities
+
+  if caps.completionProvider then
+    vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+  end
+
+  if caps.documentFormattingProvider then
+    vim.bo[bufnr].formatexpr = 'v:lua.vim.lsp.formatexpr()'
+  end
+
+  require('aneeshd9.lsp.keymaps').setup(client, bufnr)
+
+  require('aneeshd9.lsp.highlighter').setup(client, bufnr)
+
+  -- require('aneeshd9.lsp.null-ls.formatters').setup(client, bufnr)
+
+  if caps.definitionProvider then
+    vim.bo[bufnr].tagfunc = 'v:lua.vim.lsp.tagfunc'
+  end
+
+  if client.name == 'jdt.ls' then
+    -- require('jdtls').setup_dap { hotcodereplace = 'auto' }
+    -- require('jdtls.dap').setup_dap_main_class_configs()
+    vim.lsp.codelens.refresh()
+  end
+
+  if caps.documentSymbolProvider then
+    local navic = require 'nvim-navic'
+    navic.attach(client, bufnr)
+  end
+
+  if client.name ~= 'null-ls' then
+    local ih = require 'inlay-hints'
+    ih.on_attach(client, bufnr)
+  end
 end
 
-local config = {
-  signs = {
-    active = signs,
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
   },
-  update_in_insert = true,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = true,
-    style = 'minimal',
-    border = 'rounded',
-    source = 'if_many',
-    header = '',
-    prefix = '',
+}
+M.capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+local opts = {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  flags = {
+    debounce_text_changes = 150,
   },
 }
 
-vim.diagnostic.config(config)
+require('aneeshd9.lsp.handlers').setup()
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-})
+function M.setup()
+  -- require('aneeshd9.lsp.null-ls').setup(opts)
+  require('aneeshd9.lsp.installer').setup(servers, opts)
+  require('aneeshd9.lsp.inlay-hints').setup()
+end
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-})
+local diagnostics_active = true
+
+function M.toggle_diagnostics()
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.show()
+  else
+    vim.diagnostic.hide()
+  end
+end
+
+return M
