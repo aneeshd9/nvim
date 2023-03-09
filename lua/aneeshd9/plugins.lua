@@ -98,7 +98,7 @@ function M.setup()
       event = 'VimEnter',
       module = { 'which-key' },
       config = function()
-        -- require('aneeshd9.whichkey').setup()
+        require('aneeshd9.whichkey').setup()
       end,
       disable = false,
     }
@@ -228,6 +228,48 @@ function M.setup()
 
     -- java
     use { 'mfussenegger/nvim-jdtls', ft = { 'java' } }
+
+    -- Treesitter
+    use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      config = function()
+        require('aneeshd9.treesitter').setup()
+      end,
+      requires = {
+        { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'BufReadPre' },
+        { 'windwp/nvim-ts-autotag', event = 'InsertEnter' },
+        { 'JoosepAlviste/nvim-ts-context-commentstring', event = 'BufReadPre' },
+        { 'RRethy/nvim-treesitter-textsubjects', event = 'BufReadPre' },
+        { 'nvim-treesitter/playground', cmd = { 'TSPlaygroundToggle' } },
+        {
+          'm-demare/hlargs.nvim',
+          config = function()
+            require('aneeshd9.hlargs').setup()
+          end,
+          disable = false,
+        },
+      },
+    }
+
+    -- Lualine
+    use {
+      'nvim-lualine/lualine.nvim',
+      event = 'BufReadPre',
+      config = function()
+        require('aneeshd9.lualine').setup()
+      end,
+    }
+
+    -- nvim-tree
+    use {
+      'nvim-tree/nvim-tree.lua',
+      opt = true,
+      cmd = { 'NvimTreeToggle', 'NvimTreeClose' },
+      config = function()
+        require('aneeshd9.nvimtree').setup()
+      end,
+    }
 
     if is_bootstrap then
       require('packer').sync()
