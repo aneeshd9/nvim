@@ -57,6 +57,7 @@ local servers = {
   },
   jdtls = {},
   bashls = {},
+  clangd = {},
 }
 
 function M.on_attach(client, bufnr)
