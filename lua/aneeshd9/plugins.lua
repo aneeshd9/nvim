@@ -226,6 +226,9 @@ function M.setup()
       disable = false,
     }
 
+    -- java
+    use { 'mfussenegger/nvim-jdtls', ft = { 'java' } }
+
     if is_bootstrap then
       require('packer').sync()
     end
