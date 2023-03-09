@@ -227,7 +227,7 @@ function M.setup()
     }
 
     -- java
-    use { 'mfussenegger/nvim-jdtls', ft = { 'java' } }
+    use { 'mfussenegger/nvim-jdtls' }
 
     -- Treesitter
     use {
