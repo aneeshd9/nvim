@@ -92,9 +92,13 @@ function M.on_attach(client, bufnr)
     navic.attach(client, bufnr)
   end
 
+  local inlay_hints = false
+
   if client.name ~= 'null-ls' then
-    local ih = require 'inlay-hints'
-    ih.on_attach(client, bufnr)
+    if inlay_hints then
+      local ih = require 'inlay-hints'
+      ih.on_attach(client, bufnr)
+    end
   end
 end
 
