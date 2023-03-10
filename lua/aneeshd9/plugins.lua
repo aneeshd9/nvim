@@ -271,6 +271,17 @@ function M.setup()
       end,
     }
 
+    -- terminal
+    use {
+      'akinsho/toggleterm.nvim',
+      keys = { [[<C-\>]] },
+      cmd = { 'ToggleTerm', 'TermExec' },
+      module = { 'toggleterm', 'toggleterm.terminal' },
+      config = function()
+        require('aneeshd9.toggleterm').setup()
+      end,
+    }
+
     if is_bootstrap then
       require('packer').sync()
     end
