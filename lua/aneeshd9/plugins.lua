@@ -282,6 +282,16 @@ function M.setup()
       end,
     }
 
+    -- autopairs
+    use {
+      'windwp/nvim-autopairs',
+      event = 'InsertEnter',
+      module = { 'nvim-autopairs.completion.cmp', 'nvim-autopairs' },
+      config = function()
+        require('aneeshd9.autopairs').setup()
+      end,
+    }
+
     if is_bootstrap then
       require('packer').sync()
     end
