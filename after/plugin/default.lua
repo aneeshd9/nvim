@@ -50,7 +50,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.guifont = "Mononoki Nerd Font:h10"
 
 if g.neovide then
-  g.neovide_transparency = 0.9
+  g.neovide_transparency = 0.98
   g.neovide_fullscreen = true
 end
 
