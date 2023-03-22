@@ -46,6 +46,14 @@ function M.setup(servers, server_options)
       require('neodev').setup {}
       lspconfig.lua_ls.setup(opts)
     end,
+    ["tsserver"] = function()
+      local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
+      require("typescript").setup {
+        disable_commands = false,
+        debug = false,
+        server = opts,
+      }
+    end,
   }
 end
 

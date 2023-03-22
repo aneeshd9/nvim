@@ -47,11 +47,11 @@ opt.wildignore:append "**/.git/*"
 opt.foldlevel = 20
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.guifont = "Mononoki Nerd Font:h10"
+opt.guifont = "Agave Nerd Font:h11"
 
 if g.neovide then
   g.neovide_transparency = 0.98
-  g.neovide_fullscreen = true
+  g.neovide_fullscreen = false
 end
 
 g.do_filetype_lua = 1

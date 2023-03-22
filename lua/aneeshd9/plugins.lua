@@ -124,6 +124,7 @@ function M.setup()
           end,
         },
         { 'b0o/schemastore.nvim', module = { 'schemastore' } },
+        { "jose-elias-alvarez/typescript.nvim", module = { "typescript" } },
         {
           'SmiteshP/nvim-navic',
           config = function()

@@ -12,7 +12,7 @@ local servers = {
     settings = {
       python = {
         analysis = {
-          typeCheckingMode = 'off',
+          typeCheckingMode = 'basic',
           autoSearchPaths = true,
           useLibraryCodeForTypes = true,
           diagnosticMode = 'workspace',
@@ -37,6 +37,33 @@ local servers = {
         telemetry = { enable = false },
         hint = {
           enable = false,
+        },
+      },
+    },
+  },
+  tsserver = {
+    disable_formatting = true,
+    settings = {
+      javascript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+      typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
         },
       },
     },
